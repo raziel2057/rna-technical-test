@@ -1,7 +1,7 @@
 use rna_test_db;
 
 -- Crear la tabla Persona solo si no existe
-CREATE TABLE IF NOT EXISTS Persona (
+CREATE TABLE IF NOT EXISTS persona (
     identificacion BIGINT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL UNIQUE,
     genero VARCHAR(50),
@@ -11,30 +11,31 @@ CREATE TABLE IF NOT EXISTS Persona (
 );
 
 -- Crear la tabla Cliente solo si no existe
-CREATE TABLE IF NOT EXISTS Cliente (
-    clienteId BIGINT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS cliente (
+    cliente_id BIGINT PRIMARY KEY,
     contrasena VARCHAR(255) NOT NULL,
     estado BOOLEAN NOT NULL,
-    CONSTRAINT FK_Cliente_Persona FOREIGN KEY (clienteId) REFERENCES Persona(identificacion) ON DELETE CASCADE
+	identificacion BIGINT NOT NULL,
+    CONSTRAINT FK_Cliente_Persona FOREIGN KEY (identificacion) REFERENCES persona(identificacion) ON DELETE CASCADE
 );
 
 -- Crear la tabla Cuenta solo si no existe
-CREATE TABLE IF NOT EXISTS Cuenta (
-    numeroCuenta BIGINT PRIMARY KEY,
-    tipoCuenta VARCHAR(50) NOT NULL,
-    saldoInicial DECIMAL(15, 2) NOT NULL,
+CREATE TABLE IF NOT EXISTS cuenta (
+    numero_cuenta BIGINT AUTO_INCREMENT PRIMARY KEY,
+    tipo_cuenta VARCHAR(50) NOT NULL,
+    saldo_inicial DECIMAL(15, 2) NOT NULL,
     estado BOOLEAN NOT NULL,
-    nombrePersona VARCHAR(255) NOT NULL,
-    CONSTRAINT FK_Cuenta_Persona FOREIGN KEY (nombrePersona) REFERENCES Persona(nombre) ON DELETE CASCADE
+    nombre_persona VARCHAR(255) NOT NULL,
+    CONSTRAINT FK_Cuenta_Persona FOREIGN KEY (nombre_persona) REFERENCES persona(nombre) ON DELETE CASCADE
 );
 
 -- Crear la tabla Movimiento solo si no existe
-CREATE TABLE IF NOT EXISTS Movimiento (
+CREATE TABLE IF NOT EXISTS movimiento (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     fecha DATE NOT NULL,
-    tipoMovimiento VARCHAR(50) NOT NULL,
+    tipo_movimiento VARCHAR(50) NOT NULL,
     valor DECIMAL(15, 2) NOT NULL,
     saldo DECIMAL(15, 2) NOT NULL,
-    cuentaNumero BIGINT,
-    CONSTRAINT FK_Movimiento_Cuenta FOREIGN KEY (cuentaNumero) REFERENCES Cuenta(numeroCuenta) ON DELETE CASCADE
+    numero_cuenta BIGINT,
+    CONSTRAINT FK_Movimiento_Cuenta FOREIGN KEY (numero_cuenta) REFERENCES cuenta(numero_cuenta) ON DELETE CASCADE
 );
