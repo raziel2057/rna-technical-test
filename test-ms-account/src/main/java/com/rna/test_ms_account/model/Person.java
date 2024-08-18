@@ -1,4 +1,4 @@
-package com.rna.test_ms_client.model;
+package com.rna.test_ms_account.model;
 
 import java.io.Serializable;
 
@@ -15,7 +15,9 @@ import jakarta.persistence.Table;
 @Table(name = "person")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Person implements Serializable {
-
+ 	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,7 +31,7 @@ public class Person implements Serializable {
  	@Column(name = "gender")
     private String gender;
  	
- 	@Column(name = "age", nullable = false)
+ 	@Column(name = "age")
     private int age;
  	
  	@Column(name = "address")
@@ -37,21 +39,20 @@ public class Person implements Serializable {
  	
  	@Column(name = "phone")
     private String phone;
-
+ 	
 	public Person() {
 		super();
 	}
 
-	public Person(String name, String gender, int age, String address, String phone) {
-		super();
-		//this.identification = identification;
-		this.name = name;
-		this.gender = gender;
-		this.age = age;
-		this.address = address;
-		this.phone = phone;
-	}
-
+	private Person(Builder builder) {
+        this.identification = builder.identification;
+        /*this.name = builder.name;
+        this.gender = builder.gender;
+        this.age = builder.age;
+        this.address = builder.address;
+        this.phone = builder.phone;*/
+    }
+	
 	public Long getIdentification() {
 		return identification;
 	}
@@ -99,6 +100,48 @@ public class Person implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
- 	
+	
+	public static class Builder {
+        private Long identification;
+        /*private String name;
+        private String gender;
+        private Integer age;
+        private String address;
+        private String phone;*/
+
+        public Builder setIdentification(Long identification) {
+            this.identification = identification;
+            return this;
+        }
+
+        /*public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setGender(String gender) {
+            this.gender = gender;
+            return this;
+        }
+
+        public Builder setAge(Integer age) {
+            this.age = age;
+            return this;
+        }
+
+        public Builder setAddress(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Builder setPhone(String phone) {
+            this.phone = phone;
+            return this;
+        }*/
+
+        public Person build() {
+            return new Person(this);
+        }
+    }
  	
 }

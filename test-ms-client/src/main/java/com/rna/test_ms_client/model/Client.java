@@ -5,24 +5,21 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-@Entity(name = "cliente")
+@Entity(name = "client")
+@Table(name = "client")
 public class Client extends Person implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cliente_id")
+	@Column(name = "client_id")
     private Long clientId;
 	
-	@Column(name = "contrasena", nullable = false)
+	@Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "estado", nullable = false)
+    @Column(name = "state", nullable = false)
     private Boolean state;
     
 	public Client() {

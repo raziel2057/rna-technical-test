@@ -29,7 +29,7 @@ public class ClientController {
 	@Autowired
 	ClientRepository clientRepository;
 	
-	@GetMapping("/clientes")
+	@GetMapping("/clients")
 	public ResponseEntity<List<Client>> getAllClients(@RequestParam(required = false) String name) {
 		try {
 			System.out.println("Llega name:"+name);
@@ -53,7 +53,7 @@ public class ClientController {
 		}
 	}
 	
-	@GetMapping("/clientes/{id}")
+	@GetMapping("/clients/{id}")
 	public ResponseEntity<Client> getClientById(@PathVariable("id") long id) {
 		try {
 			Optional<Client> clientData = clientRepository.findById(id);
@@ -69,7 +69,7 @@ public class ClientController {
 		}
 	}
 	
-	@PostMapping("/clientes")
+	@PostMapping("/clients")
 	public ResponseEntity<Client> createClient(@RequestBody Client client) {
 	    try {
 	    	Client _client = clientRepository
@@ -80,7 +80,7 @@ public class ClientController {
 	    }
 	}
 	
-	@PutMapping("/clientes/{id}")
+	@PutMapping("/clients/{id}")
 	public ResponseEntity<Client> updateClient(@PathVariable("id") long id, @RequestBody Client client) {
 	    try {
 	    	
@@ -119,7 +119,7 @@ public class ClientController {
 	    }
 	}
 
-	@DeleteMapping("/clientes/{id}")
+	@DeleteMapping("/clients/{id}")
 	public ResponseEntity<HttpStatus> deleteClient(@PathVariable("id") long id) {
 	    try {
 	    	clientRepository.deleteById(id);
@@ -129,7 +129,7 @@ public class ClientController {
 	    }
 	}
 	
-	@DeleteMapping("/clientes")
+	@DeleteMapping("/clients")
 	public ResponseEntity<HttpStatus> deleteAllClients() {
 	    try {
 	    	clientRepository.deleteAll();

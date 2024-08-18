@@ -1,41 +1,39 @@
 use rna_test_db;
 
--- Crear la tabla Persona solo si no existe
-CREATE TABLE IF NOT EXISTS persona (
-    identificacion BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL UNIQUE,
-    genero VARCHAR(50),
-    edad INT NOT NULL,
-    direccion VARCHAR(255),
-    telefono VARCHAR(50)
+CREATE TABLE IF NOT EXISTS person (
+    identification BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(128) NOT NULL UNIQUE,
+    gender VARCHAR(32),
+    age INT NOT NULL,
+    address VARCHAR(255),
+    phone VARCHAR(32)
 );
 
--- Crear la tabla Cliente solo si no existe
-CREATE TABLE IF NOT EXISTS cliente (
-    cliente_id BIGINT PRIMARY KEY,
-    contrasena VARCHAR(255) NOT NULL,
-    estado BOOLEAN NOT NULL,
-	identificacion BIGINT NOT NULL,
-    CONSTRAINT FK_Cliente_Persona FOREIGN KEY (identificacion) REFERENCES persona(identificacion) ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS client (
+    client_id BIGINT PRIMARY KEY,
+    password VARCHAR(64) NOT NULL,
+    state BOOLEAN NOT NULL,
+	identification BIGINT NOT NULL,
+    CONSTRAINT FK_Client_Person FOREIGN KEY (identification) REFERENCES person(identification) ON DELETE CASCADE
 );
 
--- Crear la tabla Cuenta solo si no existe
-CREATE TABLE IF NOT EXISTS cuenta (
-    numero_cuenta BIGINT AUTO_INCREMENT PRIMARY KEY,
-    tipo_cuenta VARCHAR(50) NOT NULL,
-    saldo_inicial DECIMAL(15, 2) NOT NULL,
-    estado BOOLEAN NOT NULL,
-    nombre_persona VARCHAR(255) NOT NULL,
-    CONSTRAINT FK_Cuenta_Persona FOREIGN KEY (nombre_persona) REFERENCES persona(nombre) ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS account (
+    account_number BIGINT PRIMARY KEY,
+    account_type VARCHAR(32) NOT NULL,
+    initial_balance DECIMAL(15, 2) NOT NULL,
+    state BOOLEAN NOT NULL,
+    identification BIGINT NOT NULL,
+    CONSTRAINT FK_Account_Person FOREIGN KEY (identification) REFERENCES person(identification) ON DELETE CASCADE
 );
 
 -- Crear la tabla Movimiento solo si no existe
-CREATE TABLE IF NOT EXISTS movimiento (
+CREATE TABLE IF NOT EXISTS movement (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    fecha DATE NOT NULL,
-    tipo_movimiento VARCHAR(50) NOT NULL,
-    valor DECIMAL(15, 2) NOT NULL,
-    saldo DECIMAL(15, 2) NOT NULL,
-    numero_cuenta BIGINT,
-    CONSTRAINT FK_Movimiento_Cuenta FOREIGN KEY (numero_cuenta) REFERENCES cuenta(numero_cuenta) ON DELETE CASCADE
+    movement_date DATE NOT NULL,
+    movement_type VARCHAR(32) NOT NULL,
+    amount DECIMAL(15, 2) NOT NULL,
+    balance DECIMAL(15, 2) NOT NULL,
+	state VARCHAR(32) NOT NULL,
+    account_number BIGINT,
+    CONSTRAINT FK_Movement_Account FOREIGN KEY (account_number) REFERENCES account(account_number) ON DELETE CASCADE
 );
