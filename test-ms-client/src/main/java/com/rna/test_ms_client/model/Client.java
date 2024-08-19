@@ -34,20 +34,14 @@ public class Client extends Person implements Serializable {
 		this.password = password;
 		this.state = state;
 	}
-	
-	
 
 	public Long getClientId() {
 		return clientId;
 	}
 
-
-
 	public void setClientId(Long clientId) {
 		this.clientId = clientId;
 	}
-
-
 
 	public String getPassword() {
 		return password;
@@ -63,6 +57,11 @@ public class Client extends Person implements Serializable {
 
 	public void setState(Boolean state) {
 		this.state = state;
+	}
+
+	@Override
+	public String toString() {
+		return "Client [clientId=" + clientId + ", password=" + password + ", state=" + state + "]";
 	}
     
 }

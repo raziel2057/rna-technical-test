@@ -99,6 +99,11 @@ public class Person implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
- 	
+
+	@Override
+	public String toString() {
+		return "Person [identification=" + identification + ", name=" + name + ", gender=" + gender + ", age=" + age
+				+ ", address=" + address + ", phone=" + phone + "]";
+	}
  	
 }

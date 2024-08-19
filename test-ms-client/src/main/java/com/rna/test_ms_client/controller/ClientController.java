@@ -74,8 +74,9 @@ public class ClientController {
 	    try {
 	    	Client _client = clientRepository
 	          .save(new Client(client.getName(), client.getGender(), client.getAge(), client.getAddress(), client.getPhone(), client.getPassword(), Boolean.TRUE));
-	      return new ResponseEntity<>(_client, HttpStatus.CREATED);
+	    	return new ResponseEntity<>(_client, HttpStatus.CREATED);
 	    } catch (Exception e) {
+	    	e.printStackTrace();
 	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	}

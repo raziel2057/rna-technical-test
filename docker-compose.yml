@@ -34,5 +34,27 @@ services:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
+    
+  app_acc:
+    depends_on:
+      - mysqldb
+    build: ./test-ms-account
+    restart: on-failure
+    env_file: ./.env
+    ports:
+      - $SPRING_LOCAL_PORT_ACC:$SPRING_DOCKER_PORT_ACC
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
+        "spring.datasource.username" : "$MYSQLDB_USER",
+        "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQLDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update",
+        "server.port" : "$SPRING_DOCKER_PORT_ACC"
+      }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
 volumes:
   db:
