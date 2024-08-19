@@ -1,0 +1,609 @@
+{
+	"info": {
+		"_postman_id": "931bbce9-d65d-48cc-8ef1-1599594e5f5d",
+		"name": "test-rna-ms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1986897"
+	},
+	"item": [
+		{
+			"name": "clients",
+			"item": [
+				{
+					"name": "SaveClient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Raúl Naranjo\",\r\n  \"gender\": \"Masculino\",\r\n  \"age\": 30,\r\n  \"address\": \"Calle Falsa 123\",\r\n  \"phone\": \"123-456-7890\",\r\n  \"password\": \"secreta123\",\r\n  \"state\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ip_ms_cli}}:{{port_ms_cli}}/api/clients",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_cli}}"
+							],
+							"port": "{{port_ms_cli}}",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateClient",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Raúl Naranjo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ip_ms_cli}}:{{port_ms_cli}}/api/clients/1",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_cli}}"
+							],
+							"port": "{{port_ms_cli}}",
+							"path": [
+								"api",
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllClients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_cli}}:{{port_ms_cli}}/api/clients",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_cli}}"
+							],
+							"port": "{{port_ms_cli}}",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAllClients",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_cli}}:{{port_ms_cli}}/api/clients",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_cli}}"
+							],
+							"port": "{{port_ms_cli}}",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetClientByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_cli}}:{{port_ms_cli}}/api/clients?name=Raúl Naranjo",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_cli}}"
+							],
+							"port": "{{port_ms_cli}}",
+							"path": [
+								"api",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Raúl Naranjo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetClientById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_cli}}:{{port_ms_cli}}/api/clients/1",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_cli}}"
+							],
+							"port": "{{port_ms_cli}}",
+							"path": [
+								"api",
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteClientById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_cli}}:{{port_ms_cli}}/api/clients/1",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_cli}}"
+							],
+							"port": "{{port_ms_cli}}",
+							"path": [
+								"api",
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "accounts",
+			"item": [
+				{
+					"name": "SaveAccount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountNumber\": 3,\r\n  \"accountType\": \"Corriente\",\r\n  \"initialBalance\": 10000,\r\n  \"state\": true,\r\n  \"clientName\": \"Raúl Naranjo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/accounts",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateAccount",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/accounts/123456",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"accounts",
+								"123456"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllAccounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/accounts",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAllAccounts",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/accounts",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAccountsByClientName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/accounts?name=Raúl Naranjo",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Raúl Naranjo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAccountById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/accounts/8",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"accounts",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAccountById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/accounts/123456",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"accounts",
+								"123456"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "movements",
+			"item": [
+				{
+					"name": "SaveMovement",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"movementType\": \"DEBIT\",\r\n  \"amount\": 10000.55,\r\n  \"account\": {\r\n    \"accountNumber\": 3\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/movements",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"movements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReverseMovement",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/movements/3",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"movements",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllMovements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/movements",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"movements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAllMovements",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/movements",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"movements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMovementsByAccountNumber",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/movements?accountNumber=3",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"movements"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMovementById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/movements/3",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"movements",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMovementById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/movements/123456",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"movements",
+								"123456"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reports",
+			"item": [
+				{
+					"name": "AccountStatement",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{ip_ms_acc}}:{{port_ms_acc}}/api/reports?clientName=Raúl Naranjo&initialDate=2024-08-04&finishDate=2024-08-18",
+							"protocol": "http",
+							"host": [
+								"{{ip_ms_acc}}"
+							],
+							"port": "{{port_ms_acc}}",
+							"path": [
+								"api",
+								"reports"
+							],
+							"query": [
+								{
+									"key": "clientName",
+									"value": "Raúl Naranjo"
+								},
+								{
+									"key": "initialDate",
+									"value": "2024-08-04"
+								},
+								{
+									"key": "finishDate",
+									"value": "2024-08-18"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ip_ms_cli",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"key": "ip_ms_acc",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"key": "port_ms_cli",
+			"value": "6869",
+			"type": "string"
+		},
+		{
+			"key": "port_ms_acc",
+			"value": "6868",
+			"type": "string"
+		}
+	]
+}
